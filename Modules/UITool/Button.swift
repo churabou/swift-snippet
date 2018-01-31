@@ -44,5 +44,26 @@ class ViewController: UIViewController {
 }
 
 
+//************
+//中心にwidth,heightの各1/3の大きさの楕円をかく
+//************
+
+
+class BlurToolMenuButton: UIButton {
+    
+    override func draw(_ rect: CGRect) {
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        var rect = self.bounds
+        rect.origin.x = rect.size.width/2 - rect.size.width/6
+        rect.origin.y = rect.size.height/2 - rect.size.height/6
+        rect.size.width = rect.size.width/3
+        rect.size.height = rect.size.height/3
+        context?.setFillColor(UIColor.white.cgColor)
+        context?.fillEllipse(in: rect)
+    }
+}
+
 
 
