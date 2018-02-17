@@ -1,5 +1,13 @@
 import UIKit
 
+enum AnimationTarget: String {
+    case bounds = "bounds"
+    case backgroundColor = "backgroundColor"
+    case cornerRadius = "cornerRadius"
+    case positionX = "position.x"
+    case rotateZ = "transform.rotation.z"
+}
+
 //add basicAnimation
 
 extension CALayer {
@@ -8,6 +16,8 @@ extension CALayer {
     }
 }
 
+
+
 struct BasicAnimationMaker {
     
     private var base: CALayer
@@ -15,36 +25,37 @@ struct BasicAnimationMaker {
         self.base = base
     }
     
-    func backgroundColor(key: String, animation: ((CABasicAnimation) -> (CABasicAnimation))) {
-        let colorAnimation = CABasicAnimation(keyPath: "backgroundColor")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func cornerRadius(key: String, animation: ((CABasicAnimation) -> (CABasicAnimation))) {
-        let colorAnimation = CABasicAnimation(keyPath: "cornerRadius")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func rotationZ(key: String, animation: ((CABasicAnimation) -> (CABasicAnimation))) {
-        let colorAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func position(key: String, animation: ((CABasicAnimation) -> (CABasicAnimation))) {
-        let colorAnimation = CABasicAnimation(keyPath: "position")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func positionX(key: String, animation: ((CABasicAnimation) -> (CABasicAnimation))) {
-        let colorAnimation = CABasicAnimation(keyPath: "position.x")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func positionY(key: String, animation: ((CABasicAnimation) -> (CABasicAnimation))) {
-        let colorAnimation = CABasicAnimation(keyPath: "position.y")
-        base.add(animation(colorAnimation), forKey: key)
+    func add(key: String? = nil, _ target: AnimationTarget, _ basicAnimation: ((CABasicAnimation) -> (CABasicAnimation))) {
+        
+        let anim = CABasicAnimation(keyPath: target.rawValue)
+        base.add(basicAnimation(anim), forKey: key)
     }
 }
+
+
+extension CABasicAnimation {
+    
+    func from(_ value: Any) -> CABasicAnimation {
+        fromValue = value
+        return self
+    }
+    
+    func to(_ value: Any) -> CABasicAnimation {
+        toValue = value
+        return self
+    }
+    
+    func duration(_ value: CFTimeInterval) -> CABasicAnimation {
+        duration = value
+        return self
+    }
+    
+    func repeatCount(_ value: Float) -> CABasicAnimation {
+        repeatCount = value
+        return self
+    }
+}
+
 
 //add keyframeAnimation
 extension CALayer {

@@ -14,7 +14,7 @@
 		C95EA3642038468000E659C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3622038468000E659C4 /* LaunchScreen.storyboard */; };
 		C95EA36F2038468000E659C4 /* exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA36E2038468000E659C4 /* exampleTests.swift */; };
 		C95EA37A2038468000E659C4 /* exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA3792038468000E659C4 /* exampleUITests.swift */; };
-		C95EA388203846E400E659C4 /* animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA387203846E400E659C4 /* animation.swift */; };
+		C95EA388203846E400E659C4 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA387203846E400E659C4 /* Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		C95EA3752038468000E659C4 /* exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C95EA3792038468000E659C4 /* exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exampleUITests.swift; sourceTree = "<group>"; };
 		C95EA37B2038468000E659C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C95EA387203846E400E659C4 /* animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = animation.swift; path = ../../class/animation.swift; sourceTree = "<group>"; };
+		C95EA387203846E400E659C4 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = ../../class/Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 		C95EA3582038468000E659C4 /* example */ = {
 			isa = PBXGroup;
 			children = (
-				C95EA387203846E400E659C4 /* animation.swift */,
+				C95EA387203846E400E659C4 /* Animation.swift */,
 				C95EA3592038468000E659C4 /* AppDelegate.swift */,
 				C95EA35B2038468000E659C4 /* ViewController.swift */,
 				C95EA35D2038468000E659C4 /* Main.storyboard */,
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95EA388203846E400E659C4 /* animation.swift in Sources */,
+				C95EA388203846E400E659C4 /* Animation.swift in Sources */,
 				C95EA35C2038468000E659C4 /* ViewController.swift in Sources */,
 				C95EA35A2038468000E659C4 /* AppDelegate.swift in Sources */,
 			);
