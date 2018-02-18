@@ -5,8 +5,17 @@ enum AnimationTarget: String {
     case backgroundColor = "backgroundColor"
     case cornerRadius = "cornerRadius"
     case positionX = "position.x"
+    case transform = "transform"
+    case scaleX = "transform.scale.x"
     case rotateZ = "transform.rotation.z"
     case opacity = "opacity"
+    case shadowOffset = "shadowOffset"
+}
+
+extension CABasicAnimation {
+    convenience init(_ target: AnimationTarget) {
+        self.init(keyPath: target.rawValue)
+    }
 }
 
 //add basicAnimation
@@ -60,6 +69,22 @@ extension AnimationMaker {
         base.repeatCount = value
         return self
     }
+    
+    func autoreverses(_ value: Bool) -> AnimationMaker<T> {
+        base.autoreverses = value
+        return self
+    }
+    
+    func begin(_ value: CFTimeInterval) -> AnimationMaker<T> {
+        base.beginTime = value
+        return self
+    }
+    
+    func fillModeForwards() -> AnimationMaker<T> {
+        base.fillMode = kCAFillModeForwards
+        return self
+    }
+
 }
 
 extension AnimationMaker where T: CABasicAnimation {
@@ -86,6 +111,14 @@ extension AnimationMaker where T: CAKeyframeAnimation {
     
     func times(_ values: [NSNumber]) -> AnimationMaker<T> {
         base.keyTimes = values
+        return self
+    }
+}
+
+extension AnimationMaker where T: CAAnimationGroup {
+    
+    func anims(_ values: [CAAnimation]) -> AnimationMaker<T> {
+        base.animations = values
         return self
     }
 }
