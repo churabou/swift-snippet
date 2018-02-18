@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    
+    func hoge(closuer: (([Int])->Swift.Void)) {
+        
+        closuer([0,1,2,3])
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,33 +25,23 @@ class ViewController: UIViewController {
         v.center = view.center
         view.addSubview(v)
         
-        
-        
-        
-        
-        view.layer.basic.add(.backgroundColor, { anim in
-            return anim.from(UIColor.blue.cgColor).to(UIColor.orange.cgColor).duration(2).repeatCount(10)
+
+        //中心から円が広がるアニメーション
+        v.layer.basic(.cornerRadius, { anim in
+            return anim
+            .from(25)
+            .to(500)
+            .duration(0.7)
+            .repeatCount(10)
         })
         
-//        //中心から円が広がる
-//        v.layer.basic.cornerRadius(key: "", animation: { anim in
-//
-//            anim.from(25).to(500).duration(0.7)
-//            anim.fromValue = 25
-//            anim.toValue = 500
-//            anim.duration = 0.7
-//            anim.repeatCount = 10
-//            return anim
-//        })
-//
-//        v.layer.basic.bounds(key: "", animation: { anim in
-//            anim.fromValue = CGRect(x: 0, y: 0, width: 50, height: 50)
-//            anim.toValue = CGRect(x: 0, y: 0, width: 1000, height: 1000)
-//            anim.duration = 0.7
-//            anim.repeatCount = 10
-//            return anim
-//        })
-        
+        v.layer.basic(.bounds, { anim in
+            return anim
+            .from(CGRect(x: 0, y: 0, width: 50, height: 50))
+            .to(CGRect(x: 0, y: 0, width: 1000, height: 1000))
+            .duration(0.7)
+            .repeatCount(10)
+        })
     }
 }
 

@@ -6,99 +6,86 @@ enum AnimationTarget: String {
     case cornerRadius = "cornerRadius"
     case positionX = "position.x"
     case rotateZ = "transform.rotation.z"
+    case opacity = "opacity"
 }
 
 //add basicAnimation
 
 extension CALayer {
-    var basic: BasicAnimationMaker {
-        return BasicAnimationMaker(self)
-    }
-}
 
-
-
-struct BasicAnimationMaker {
-    
-    private var base: CALayer
-    init(_ base: CALayer) {
-        self.base = base
-    }
-    
-    func add(key: String? = nil, _ target: AnimationTarget, _ basicAnimation: ((CABasicAnimation) -> (CABasicAnimation))) {
+    func basic(key: String? = nil, _ target: AnimationTarget, _ basicAnimation: ((AnimationMaker<CABasicAnimation>) -> (AnimationMaker<CABasicAnimation>)))  {
         
         let anim = CABasicAnimation(keyPath: target.rawValue)
-        base.add(basicAnimation(anim), forKey: key)
+        add(basicAnimation(anim.maker).Animation(), forKey: key)
+    }
+    
+    func keyframe(key: String? = nil, _ target: AnimationTarget, _ basicAnimation: ((AnimationMaker<CAKeyframeAnimation>) -> (AnimationMaker<CAKeyframeAnimation>)))  {
+        
+        let anim = CAKeyframeAnimation(keyPath: target.rawValue)
+        add(basicAnimation(anim.maker).Animation(), forKey: key)
     }
 }
 
+extension CAAnimation: AnimationMakable {}
 
-extension CABasicAnimation {
-    
-    func from(_ value: Any) -> CABasicAnimation {
-        fromValue = value
-        return self
-    }
-    
-    func to(_ value: Any) -> CABasicAnimation {
-        toValue = value
-        return self
-    }
-    
-    func duration(_ value: CFTimeInterval) -> CABasicAnimation {
-        duration = value
-        return self
-    }
-    
-    func repeatCount(_ value: Float) -> CABasicAnimation {
-        repeatCount = value
-        return self
+protocol AnimationMakable {}
+
+extension AnimationMakable where Self: CAAnimation {
+    var maker: AnimationMaker<Self> {
+        return AnimationMaker(self)
     }
 }
 
-
-//add keyframeAnimation
-extension CALayer {
-    var kf: KeyFrameAnimationMaker {
-        return KeyFrameAnimationMaker(self)
-    }
-}
-
-struct KeyFrameAnimationMaker {
+class AnimationMaker<T: CAAnimation> {
     
-    private var base: CALayer
-    init(_ base: CALayer) {
+    private var base: T
+    init(_ base: T) {
         self.base = base
     }
     
-    func backgroundColor(key: String, animation: ((CAKeyframeAnimation) -> (CAKeyframeAnimation))) {
-        let colorAnimation = CAKeyframeAnimation(keyPath: "backgroundColor")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func cornerRadius(key: String, animation: ((CAKeyframeAnimation) -> (CAKeyframeAnimation))) {
-        let cornerRadiusAnimation = CAKeyframeAnimation(keyPath: "cornerRadius")
-        base.add(animation(cornerRadiusAnimation), forKey: key)
-    }
-    
-    func rotationZ(key: String, animation: ((CAKeyframeAnimation) -> (CAKeyframeAnimation))) {
-        let colorAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func position(key: String, animation: ((CAKeyframeAnimation) -> (CAKeyframeAnimation))) {
-        let colorAnimation = CAKeyframeAnimation(keyPath: "position")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func positionX(key: String, animation: ((CAKeyframeAnimation) -> (CAKeyframeAnimation))) {
-        let colorAnimation = CAKeyframeAnimation(keyPath: "position.x")
-        base.add(animation(colorAnimation), forKey: key)
-    }
-    
-    func positionY(key: String, animation: ((CAKeyframeAnimation) -> (CAKeyframeAnimation))) {
-        let colorAnimation = CAKeyframeAnimation(keyPath: "position.y")
-        base.add(animation(colorAnimation), forKey: key)
+    func Animation() -> CAAnimation {
+        return base
     }
 }
 
+
+extension AnimationMaker {
+    
+    func duration(_ value: CFTimeInterval) -> AnimationMaker<T> {
+        base.duration = value
+        return self
+    }
+    
+    func repeatCount(_ value: Float) -> AnimationMaker<T> {
+        base.repeatCount = value
+        return self
+    }
+}
+
+extension AnimationMaker where T: CABasicAnimation {
+    
+    
+    func from(_ value: Any) -> AnimationMaker<T> {
+        base.fromValue = value
+        return self
+    }
+    
+    func to(_ value: Any) ->  AnimationMaker<T> {
+        base.toValue = value
+        return self
+    }
+}
+
+
+extension AnimationMaker where T: CAKeyframeAnimation {
+    
+    func values(_ values: [Any]) -> AnimationMaker<T> {
+        base.values = values
+        return self
+    }
+    
+    func times(_ values: [NSNumber]) -> AnimationMaker<T> {
+        base.keyTimes = values
+        return self
+    }
+}
