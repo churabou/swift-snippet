@@ -6,6 +6,7 @@ enum AnimationTarget: String {
     case cornerRadius = "cornerRadius"
     case positionX = "position.x"
     case transform = "transform"
+    case scale = "transform.scale"
     case scaleX = "transform.scale.x"
     case rotateZ = "transform.rotation.z"
     case opacity = "opacity"

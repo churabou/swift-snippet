@@ -7,44 +7,41 @@
 //
 
 import UIKit
+//import Mat
+
+
+struct Math {
+    
+    static var pi: CGFloat {
+        return CGFloat(Double.pi)
+    }
+    
+    static func sin(_ degrees: Double) -> Double {
+        return __sinpi(degrees/180.0)
+    }
+    
+    static func cos(_ degrees: Double) -> Double {
+        return __cospi(degrees/180.0)
+    }
+}
 
 class ViewController: UIViewController {
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         let layer = CALayer()
         layer.frame.origin = CGPoint(x: 100, y: 100)
-        layer.frame.size = CGSize(width: 200, height: 200)
-        layer.cornerRadius = 100
-        layer.transform = CATransform3DMakeTranslation(0, 100, 0)
+        layer.frame.size = CGSize(width: 20, height: 20)
+        layer.cornerRadius = 10
         layer.backgroundColor = UIColor.magenta.cgColor
-        
-        let anim1 = CABasicAnimation(.positionX).maker
-        .from(0)
-        .to(300)
-        .duration(3)
-        .fillModeForwards()
-        .Animation()
-        
-        let anim2 = CABasicAnimation(.backgroundColor).maker
-        .from(UIColor.red.cgColor)
-        .to(UIColor.cyan.cgColor)
-        .begin(3)
-        .duration(1)
-        .repeatCount(1)
-        .Animation()
-        
-        let group = CAAnimationGroup().maker
-        .anims([anim1, anim2])
-        .duration(4)
-        .repeatCount(10)
-        .autoreverses(true)
-        .Animation()
-        
-        layer.add(group, forKey: nil)
-        view.layer.addSublayer(layer)
+
+
+        wrapperLayer.addSublayer(layer)
     }
 }
 
@@ -59,6 +56,17 @@ class GDButton: UIButton {
         v.endPoint = CGPoint(x: 1.0, y: 0.5)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 //```

@@ -15,6 +15,7 @@
 		C95EA36F2038468000E659C4 /* exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA36E2038468000E659C4 /* exampleTests.swift */; };
 		C95EA37A2038468000E659C4 /* exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA3792038468000E659C4 /* exampleUITests.swift */; };
 		C95EA388203846E400E659C4 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA387203846E400E659C4 /* Animation.swift */; };
+		C95EA38C203A6F5900E659C4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA38B203A6F5900E659C4 /* HUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C95EA3792038468000E659C4 /* exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exampleUITests.swift; sourceTree = "<group>"; };
 		C95EA37B2038468000E659C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C95EA387203846E400E659C4 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = ../../class/Animation.swift; sourceTree = "<group>"; };
+		C95EA38B203A6F5900E659C4 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				C95EA387203846E400E659C4 /* Animation.swift */,
 				C95EA3592038468000E659C4 /* AppDelegate.swift */,
 				C95EA35B2038468000E659C4 /* ViewController.swift */,
+				C95EA38B203A6F5900E659C4 /* HUD.swift */,
 				C95EA35D2038468000E659C4 /* Main.storyboard */,
 				C95EA3602038468000E659C4 /* Assets.xcassets */,
 				C95EA3622038468000E659C4 /* LaunchScreen.storyboard */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95EA388203846E400E659C4 /* Animation.swift in Sources */,
+				C95EA38C203A6F5900E659C4 /* HUD.swift in Sources */,
 				C95EA35C2038468000E659C4 /* ViewController.swift in Sources */,
 				C95EA35A2038468000E659C4 /* AppDelegate.swift in Sources */,
 			);
