@@ -51,7 +51,20 @@ class HUD: UIViewController {
                 .duration(100)
                 .Animation()
 
+            let anim2 = CABasicAnimation(.scale).maker
+                .from(1)
+                .to(1.4)
+                .begin(0.1*Double(i))
+                .duration(1)
+                .repeatCount(Float.infinity)
+                .Animation()
+            
+            let group2 = CAAnimationGroup().maker
+                .anims([anim2])
+                .duration(100)
+                .Animation()
             layer.add(group, forKey: nil)
+            layer.add(group2, forKey: nil)
         }
     }
 }
