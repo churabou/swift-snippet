@@ -1,15 +1,19 @@
-
 import UIKit
+//カラーアニメーションを繋げたい。 keyframeとかの方が良さそう。
+class HUD: UIViewController {
 
-class HUD: UIView {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUp()
+    }
     
     func setUp() {
+
         let wrapperLayer = CALayer()
         wrapperLayer.frame.size = CGSize(width: 200, height: 200)
         wrapperLayer.backgroundColor = UIColor(white: 0.2, alpha: 0.5).cgColor
         wrapperLayer.frame.origin = CGPoint(x: view.frame.width/2-100, y: view.frame.height/2-100)
         view.layer.addSublayer(wrapperLayer)
-        
         
         for i in 0..<8 {
             
@@ -52,3 +56,4 @@ class HUD: UIView {
         }
     }
 }
+

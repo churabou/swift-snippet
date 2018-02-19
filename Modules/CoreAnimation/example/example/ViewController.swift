@@ -28,22 +28,12 @@ struct Math {
 class ViewController: UIViewController {
     
     
-    
-    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let layer = CALayer()
-        layer.frame.origin = CGPoint(x: 100, y: 100)
-        layer.frame.size = CGSize(width: 20, height: 20)
-        layer.cornerRadius = 10
-        layer.backgroundColor = UIColor.magenta.cgColor
-
-
-        wrapperLayer.addSublayer(layer)
+    override func viewDidAppear(_ animated: Bool) {
+        present(HUD(), animated: true, completion: nil)
     }
 }
+
 
 
 class GDButton: UIButton {
