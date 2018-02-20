@@ -55,7 +55,8 @@ class HUD: UIViewController {
                 .from(1)
                 .to(1.4)
                 .begin(0.1*Double(i))
-                .duration(1)
+                .duration(1
+                )
                 .repeatCount(Float.infinity)
                 .Animation()
             
