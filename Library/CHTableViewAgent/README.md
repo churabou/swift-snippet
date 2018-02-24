@@ -9,63 +9,62 @@ in case you use UITableView that has more than 3 section, CHTableViewAgent helps
     tableView.frame = view.frame
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     view.addSubview(tableView)
-``
+```
 
 ```
+
 extension ViewController: CHTableViewAgentDelegate {
-
+    
     func numberOfSection() -> Int {
-        return 3
+        return 5
     }
-
-
-
-    func configureSection(_ tableView: UITableView, _ indexPath: IndexPath, _ info: CHTableViewSectionInfo) {
-
-           switch indexPath.section {
-           case 0:
-               info
-           .cellForRowAt {
-               let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-               cell.textLabel?.text = "0 \(indexPath)"
-               return cell
-           }
-           .heightForRowAt {
-               return 50
-           }
-       case 1:
-           info
-           .cellForRowAt {
-               let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-               cell.textLabel?.text = "0 \(indexPath)"
-               return cell
-           }
-           .heightForRowAt {
-               return 100
-           }
-       case 2:
-           info
-           .cellForRowAt {
-               if indexPath.row == 0 {
-                   let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-                   cell.textLabel?.text = "0 \(indexPath)"
-                   return cell
-               } else {
-                   return UITableViewCell()
-               }
-           }
-           .heightForRowAt {
-               return 80
-           }
-           .sectionHeader {
-               return UIView()
-           }
-   }    
-
-    func defaultAction(_ tableView: UITableView, _ indexPath: IndexPath, _ info: CHTableViewSectionInfo) {
-       info.didSelectRow {
-           print(indexPath)
-       }
+    
+    func configureSection(_ tableView: UITableView, _ section: Int, _ info: CHTableViewSectionInfo) {
+        
+        switch section {
+            
+        case 0:
+            info.configure { $0
+                .numberOfRow {
+                    return 5
+                }
+                .cellForRowAt { indexPath in
+                    let cell = UITableViewCell()
+                    cell.textLabel?.text = "0 \(indexPath)"
+                    return cell
+                }
+                .heightForRowAt { indexPath in
+                    let k = indexPath.row % 3
+                    return CGFloat(k*30)
+                }
+            }
+            
+        case 3:
+            info.configure { $0
+                .cellForRowAt { indexPath in
+                    let cell = UITableViewCell()
+                    cell.backgroundColor = .red
+                    cell.textLabel?.text = "0 \(indexPath)"
+                    return cell
+                }
+                .didSelectRowAt { IndexPath in
+                    print("section 3 clicked \(IndexPath)")
+                }
+            }
+        default:
+            info.configure { $0
+                .cellForRowAt { indexPath in
+                    
+                    let cell = UITableViewCell()
+                    cell.textLabel?.text = "デフォルト載せる \(indexPath)"
+                    return cell
+                }
+                .heightForRowAt { indexPath in
+                    return 50
+                }
+            }
+        }
     }
 }
+
 ```
