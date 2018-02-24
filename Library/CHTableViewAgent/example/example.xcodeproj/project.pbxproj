@@ -83,7 +83,7 @@
 		C9CD1C772041518B00114491 = {
 			isa = PBXGroup;
 			children = (
-				C9CD1CB12041519E00114491 /* CHTableViewAgent */,
+				C9CD1CB12041519E00114491 /* class */,
 				C9CD1C822041518B00114491 /* example */,
 				C9CD1C972041518B00114491 /* exampleTests */,
 				C9CD1CA22041518B00114491 /* exampleUITests */,
@@ -132,15 +132,15 @@
 			path = exampleUITests;
 			sourceTree = "<group>";
 		};
-		C9CD1CB12041519E00114491 /* CHTableViewAgent */ = {
+		C9CD1CB12041519E00114491 /* class */ = {
 			isa = PBXGroup;
 			children = (
 				C9CD1CB22041519E00114491 /* CHTableViewAgent.swift */,
 				C9CD1CB32041519E00114491 /* CHTableViewAgentDelegate.swift */,
 				C9CD1CB42041519E00114491 /* CHTableViewInfo.swift */,
 			);
-			name = CHTableViewAgent;
-			path = ../CHTableViewAgent;
+			name = class;
+			path = ../class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
