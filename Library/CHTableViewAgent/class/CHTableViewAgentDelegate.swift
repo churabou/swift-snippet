@@ -6,11 +6,11 @@
 //  Copyright © 2018年 ちゅーたつ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 protocol CHTableViewAgentDelegate {
     
     func numberOfSection() -> Int
-    func configureSection(_ section: Int, _ info: CHTableViewSectionInfo)
+    func configureSection(_ tableView: UITableView, _ section: Int, _ info: CHTableViewSectionInfo)
 }

@@ -12,24 +12,49 @@ import UIKit
 
 class CHTableViewSectionInfo {
     
-    var item = CHSectionInfoItem()
+    func configure(_ closure: (CHSectionInfoMaker)->(CHSectionInfoMaker)) {
+        closure(CHSectionInfoMaker(self)).escape()
+    }
+
+    func escape(_ obj :CHSectionInfoMaker) {}
     
+    var numberOfRow: (()->(Int))?
+    var cellForRowAt: ((IndexPath) -> UITableViewCell)?
+    var heightForRowAt: ((IndexPath) -> CGFloat)?
+    var didSelectRowAt: ((IndexPath) -> Swift.Void)?
     
-    func cellForRowAt(_ closure: @escaping (UITableView, IndexPath) -> UITableViewCell) -> Self {
+}
+
+
+class CHSectionInfoMaker {
     
+    var item: CHTableViewSectionInfo
+    
+    init(_ item: CHTableViewSectionInfo) {
+        self.item = item
+    }
+    
+    func numberOfRow(_ closure: @escaping () -> Int) -> Self {
+        item.numberOfRow = closure
+        return self
+    }
+    
+    func cellForRowAt(_ closure: @escaping (IndexPath) -> UITableViewCell) -> Self {
+        
         item.cellForRowAt = closure
         return self
     }
-    var cellForRowAt: ((UITableView, IndexPath) -> UITableViewCell)?
-    var heightForRowAt: ((UITableView, IndexPath) -> CGFloat)?
-
+    
+    func heightForRowAt(_ closure: @escaping (IndexPath) -> CGFloat) -> Self {
+        item.heightForRowAt = closure
+        return self
+    }
+    
+    func didSelectRowAt(_ closure: @escaping (IndexPath) -> Swift.Void) -> Self {
+        item.didSelectRowAt = closure
+        return self
+    }
+    
+    fileprivate func escape() {}
 }
-
-class CHSectionInfoItem {
-    var cellForRowAt: ((UITableView, IndexPath) -> UITableViewCell)?
-    var heightForRowAt: ((UITableView, IndexPath) -> CGFloat)?
-}
-
-
-
 

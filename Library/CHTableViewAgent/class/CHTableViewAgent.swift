@@ -36,7 +36,8 @@ class CHTableViewAgent: NSObject {
         }
         
         for i in 0..<sectionNum {
-            delegate?.configureSection(i, infoArray[i])
+            //delegate?.configureSection(i, infoArray[i])
+            delegate?.configureSection(tableView, i, infoArray[i])
         }
     }
 }
@@ -45,11 +46,16 @@ extension CHTableViewAgent: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if let k = infoArray[indexPath.section].heightForRowAt?(tableView, indexPath) {
-            return k
+        if let height = infoArray[indexPath.section].heightForRowAt?(indexPath) {
+            return height
         } else {
-            return 100
+            return tableView.rowHeight
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        infoArray[indexPath.section].didSelectRowAt?(indexPath)
     }
 }
 
@@ -60,13 +66,17 @@ extension CHTableViewAgent: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let numberOfRow = infoArray[section].numberOfRow?() {
+            return numberOfRow
+        } else {
+            return 4
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if let cell = infoArray[indexPath.section].cellForRowAt?(tableView, indexPath) {
+        if let cell = infoArray[indexPath.section].cellForRowAt?(indexPath) {
             return cell
         }
         
