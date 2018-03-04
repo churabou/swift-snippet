@@ -28,12 +28,25 @@ struct Math {
 class ViewController: UIViewController {
     
     
-
     override func viewDidAppear(_ animated: Bool) {
-        present(HUD(), animated: true, completion: nil)
+        
+        let v = UIView()
+        
+        v.frame = view.frame
+        v.backgroundColor = .red
+        view.addSubview(v)
+        
+        
+        UIView.animate(withDuration: 5, animations: {
+            
+//            v.transform = v.transform.scaledBy(x: 0.1, y: 0.3)
+            v.transform = v.transform.inverted()
+            
+        })
+        
+        
     }
 }
-
 
 
 class GDButton: UIButton {
@@ -46,7 +59,6 @@ class GDButton: UIButton {
         v.endPoint = CGPoint(x: 1.0, y: 0.5)
     }
 }
-
 
 
 

@@ -11,9 +11,16 @@ enum AnimationTarget: String {
     case rotateZ = "transform.rotation.z"
     case opacity = "opacity"
     case shadowOffset = "shadowOffset"
+    case path = "path"
 }
 
 extension CABasicAnimation {
+    convenience init(_ target: AnimationTarget) {
+        self.init(keyPath: target.rawValue)
+    }
+}
+
+extension CAKeyframeAnimation {
     convenience init(_ target: AnimationTarget) {
         self.init(keyPath: target.rawValue)
     }

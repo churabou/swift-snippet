@@ -30,17 +30,15 @@ extension ViewController: CHTableViewAgentDelegate {
             
         case 0:
             info.configure { $0
-                .numberOfRow {
-                    return 5
-                }
+                .numberOfRow(11)
+                .heightForRow(100)
                 .cellForRowAt { indexPath in
                     let cell = UITableViewCell()
                     cell.textLabel?.text = "0 \(indexPath)"
                     return cell
                 }
-                .heightForRowAt { indexPath in
-                    let k = indexPath.row % 3
-                    return CGFloat(k*30)
+                .didSelectRowAt { _ in
+                    print(" instead of If indexpath.section == 1 ")
                 }
             }
             
@@ -64,10 +62,11 @@ extension ViewController: CHTableViewAgentDelegate {
                     cell.textLabel?.text = "デフォルト載せる \(indexPath)"
                     return cell
                 }
-                .heightForRowAt { indexPath in
-                    return 50
-                }
+                .heightForRow(50)
             }
         }
     }
 }
+
+
+

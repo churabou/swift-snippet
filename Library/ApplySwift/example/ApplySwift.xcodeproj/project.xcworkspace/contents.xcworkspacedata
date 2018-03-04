@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:../../class"
+      name = "class">
+      <FileRef
+         location = "group:Apply.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UIButton+Apply.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UILabel+Apply.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UIView+Apply.swift">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>

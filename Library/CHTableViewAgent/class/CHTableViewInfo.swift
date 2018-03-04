@@ -39,6 +39,15 @@ class CHSectionInfoMaker {
         return self
     }
     
+    func numberOfRow(_ numberOfRow: Int) -> Self {
+        item.numberOfRow = {
+            return numberOfRow
+        }
+        return self
+    }
+    
+    
+    
     func cellForRowAt(_ closure: @escaping (IndexPath) -> UITableViewCell) -> Self {
         
         item.cellForRowAt = closure
@@ -47,6 +56,13 @@ class CHSectionInfoMaker {
     
     func heightForRowAt(_ closure: @escaping (IndexPath) -> CGFloat) -> Self {
         item.heightForRowAt = closure
+        return self
+    }
+    
+    func heightForRow(_ height: CGFloat) -> Self {
+        item.heightForRowAt = { _ in
+            return height
+        }
         return self
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91F1CD3204BCE54000F9A67 /* ExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F1CD2204BCE54000F9A67 /* ExampleController.swift */; };
 		C95EA39E203BEB0900E659C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA39D203BEB0900E659C4 /* AppDelegate.swift */; };
 		C95EA3A0203BEB0900E659C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA39F203BEB0900E659C4 /* ViewController.swift */; };
 		C95EA3A3203BEB0900E659C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3A1203BEB0900E659C4 /* Main.storyboard */; };
@@ -14,11 +15,11 @@
 		C95EA3A8203BEB0900E659C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3A6203BEB0900E659C4 /* LaunchScreen.storyboard */; };
 		C95EA3B3203BEB0900E659C4 /* exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA3B2203BEB0900E659C4 /* exampleTests.swift */; };
 		C95EA3BE203BEB0900E659C4 /* exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA3BD203BEB0900E659C4 /* exampleUITests.swift */; };
-		C95EA3CF203C561100E659C4 /* voice_01.aac in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3CC203C561100E659C4 /* voice_01.aac */; };
-		C95EA3D0203C561100E659C4 /* voice_02.aac in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3CD203C561100E659C4 /* voice_02.aac */; };
-		C95EA3D1203C561100E659C4 /* voice_03.aac in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3CE203C561100E659C4 /* voice_03.aac */; };
 		C95EA3D3203C57E900E659C4 /* AudioPacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EA3D2203C57E900E659C4 /* AudioPacer.swift */; };
-		C95EA3D5203C5D6200E659C4 /* voice_02.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C95EA3D4203C5D6200E659C4 /* voice_02.aiff */; };
+		C9AED630204A796F006CC8D0 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED62F204A796F006CC8D0 /* Button.swift */; };
+		C9D6528B204BCAFB00695A8D /* voice1.aac in Resources */ = {isa = PBXBuildFile; fileRef = C9D65288204BCAFB00695A8D /* voice1.aac */; };
+		C9D6528C204BCAFB00695A8D /* voice2.aac in Resources */ = {isa = PBXBuildFile; fileRef = C9D65289204BCAFB00695A8D /* voice2.aac */; };
+		C9D6528D204BCAFB00695A8D /* voice3.aac in Resources */ = {isa = PBXBuildFile; fileRef = C9D6528A204BCAFB00695A8D /* voice3.aac */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C91F1CD2204BCE54000F9A67 /* ExampleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleController.swift; sourceTree = "<group>"; };
 		C95EA39A203BEB0900E659C4 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C95EA39D203BEB0900E659C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C95EA39F203BEB0900E659C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,11 +54,11 @@
 		C95EA3B9203BEB0900E659C4 /* exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C95EA3BD203BEB0900E659C4 /* exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exampleUITests.swift; sourceTree = "<group>"; };
 		C95EA3BF203BEB0900E659C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C95EA3CC203C561100E659C4 /* voice_01.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice_01.aac; sourceTree = "<group>"; };
-		C95EA3CD203C561100E659C4 /* voice_02.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice_02.aac; sourceTree = "<group>"; };
-		C95EA3CE203C561100E659C4 /* voice_03.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice_03.aac; sourceTree = "<group>"; };
 		C95EA3D2203C57E900E659C4 /* AudioPacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPacer.swift; sourceTree = "<group>"; };
-		C95EA3D4203C5D6200E659C4 /* voice_02.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = voice_02.aiff; sourceTree = "<group>"; };
+		C9AED62F204A796F006CC8D0 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		C9D65288204BCAFB00695A8D /* voice1.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice1.aac; sourceTree = "<group>"; };
+		C9D65289204BCAFB00695A8D /* voice2.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice2.aac; sourceTree = "<group>"; };
+		C9D6528A204BCAFB00695A8D /* voice3.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice3.aac; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +112,9 @@
 				C95EA39D203BEB0900E659C4 /* AppDelegate.swift */,
 				C95EA39F203BEB0900E659C4 /* ViewController.swift */,
 				C95EA3D2203C57E900E659C4 /* AudioPacer.swift */,
-				C95EA3CB203C561100E659C4 /* voice */,
+				C91F1CD2204BCE54000F9A67 /* ExampleController.swift */,
+				C9AED62F204A796F006CC8D0 /* Button.swift */,
+				C9D65287204BCAFB00695A8D /* voice */,
 				C95EA3A1203BEB0900E659C4 /* Main.storyboard */,
 				C95EA3A4203BEB0900E659C4 /* Assets.xcassets */,
 				C95EA3A6203BEB0900E659C4 /* LaunchScreen.storyboard */,
@@ -137,13 +141,12 @@
 			path = exampleUITests;
 			sourceTree = "<group>";
 		};
-		C95EA3CB203C561100E659C4 /* voice */ = {
+		C9D65287204BCAFB00695A8D /* voice */ = {
 			isa = PBXGroup;
 			children = (
-				C95EA3CC203C561100E659C4 /* voice_01.aac */,
-				C95EA3D4203C5D6200E659C4 /* voice_02.aiff */,
-				C95EA3CD203C561100E659C4 /* voice_02.aac */,
-				C95EA3CE203C561100E659C4 /* voice_03.aac */,
+				C9D65288204BCAFB00695A8D /* voice1.aac */,
+				C9D65289204BCAFB00695A8D /* voice2.aac */,
+				C9D6528A204BCAFB00695A8D /* voice3.aac */,
 			);
 			path = voice;
 			sourceTree = "<group>";
@@ -255,11 +258,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95EA3D0203C561100E659C4 /* voice_02.aac in Resources */,
-				C95EA3D1203C561100E659C4 /* voice_03.aac in Resources */,
+				C9D6528C204BCAFB00695A8D /* voice2.aac in Resources */,
+				C9D6528B204BCAFB00695A8D /* voice1.aac in Resources */,
+				C9D6528D204BCAFB00695A8D /* voice3.aac in Resources */,
 				C95EA3A8203BEB0900E659C4 /* LaunchScreen.storyboard in Resources */,
-				C95EA3CF203C561100E659C4 /* voice_01.aac in Resources */,
-				C95EA3D5203C5D6200E659C4 /* voice_02.aiff in Resources */,
 				C95EA3A5203BEB0900E659C4 /* Assets.xcassets in Resources */,
 				C95EA3A3203BEB0900E659C4 /* Main.storyboard in Resources */,
 			);
@@ -289,6 +291,8 @@
 				C95EA3A0203BEB0900E659C4 /* ViewController.swift in Sources */,
 				C95EA3D3203C57E900E659C4 /* AudioPacer.swift in Sources */,
 				C95EA39E203BEB0900E659C4 /* AppDelegate.swift in Sources */,
+				C91F1CD3204BCE54000F9A67 /* ExampleController.swift in Sources */,
+				C9AED630204A796F006CC8D0 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +462,7 @@
 				DEVELOPMENT_TEAM = 538R6M85SQ;
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.example.giugi.;
+				PRODUCT_BUNDLE_IDENTIFIER = test.exa.gae.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,7 +477,7 @@
 				DEVELOPMENT_TEAM = 538R6M85SQ;
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.example.giugi.;
+				PRODUCT_BUNDLE_IDENTIFIER = test.exa.gae.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

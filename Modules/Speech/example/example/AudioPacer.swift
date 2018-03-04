@@ -10,60 +10,46 @@ import Foundation
 import Speech
 
 
-class AudioPacer: NSObject {
+class AudioRecognizer: NSObject {
     
-    // Specific language
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))
-    private var recognitionRequest: SFSpeechRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
-    
-    func requestAuthorization() {
+    static func requestAuthorization() {
         
         SFSpeechRecognizer.requestAuthorization { authStatus in
             OperationQueue.main.addOperation {
                 switch authStatus {
-                case .authorized: break
-                // 許可された
-                case .denied: break
-                // 拒否された
+                case .authorized: break // 許可された
+                case .denied: break // 拒否された
                 case .restricted:
-                    print("なんか restricted")
-                    return
-                case .notDetermined: return
-                    print("なんか notDetermined")
+                    print("restricted")
+                case .notDetermined:
+                    print("notDetermined")
                 }
             }
         }
     }
+    // Specific language
+    private var speechRecognizer: SFSpeechRecognizer?
+    private var recognitionRequest: SFSpeechRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+
+    func startRecognition(url: URL, completion: @escaping (String) -> Swift.Void) {
     
-    func startRecognition() {
-        
-        guard let path = Bundle.main.path(forResource: "voice_02", ofType: "aiff") else {
-            fatalError("voice_02.aac not found")
-        }
-        
-        guard let url = URL(string: path) else {
-            fatalError("failed to init URL from path")
-        }
-        
-        print("A地点")
-        
+        speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))
         recognitionRequest = SFSpeechURLRecognitionRequest(url: url)
         recognitionRequest?.shouldReportPartialResults = true
         
-        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest!) {
-            result, error in
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest!) { result, error in
             var isFinal = false
-            
+            var text = ""
             if let result = result {
-                print(result.bestTranscription.formattedString)
+                text = result.bestTranscription.formattedString
+                print(text)
                 isFinal = result.isFinal
             }
             
-                print("B地点")
-            
             if error != nil || isFinal {
-                // 60 sec limit reached
+                print("60秒の制限に達したか認識が終わった")
+                completion(text)
             }
         }
     }
