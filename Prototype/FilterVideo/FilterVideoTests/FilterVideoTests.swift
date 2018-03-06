@@ -1,15 +1,15 @@
 //
-//  ApplySwiftTests.swift
-//  ApplySwiftTests
+//  FilterVideoTests.swift
+//  FilterVideoTests
 //
-//  Created by ちゅーたつ on 2018/03/04.
+//  Created by ちゅーたつ on 2018/03/06.
 //  Copyright © 2018年 ちゅーたつ. All rights reserved.
 //
 
 import XCTest
-@testable import ApplySwift
+@testable import FilterVideo
 
-class ApplySwiftTests: XCTestCase {
+class FilterVideoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

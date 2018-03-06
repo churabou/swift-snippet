@@ -1,14 +1,14 @@
 //
-//  ApplySwiftUITests.swift
-//  ApplySwiftUITests
+//  FilterVideoUITests.swift
+//  FilterVideoUITests
 //
-//  Created by ちゅーたつ on 2018/03/04.
+//  Created by ちゅーたつ on 2018/03/06.
 //  Copyright © 2018年 ちゅーたつ. All rights reserved.
 //
 
 import XCTest
 
-class ApplySwiftUITests: XCTestCase {
+class FilterVideoUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
