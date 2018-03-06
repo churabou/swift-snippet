@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C957F43C204E6BA3009BE05F /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F438204E6BA3009BE05F /* Apply.swift */; };
-		C957F43D204E6BA3009BE05F /* UIButton+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F439204E6BA3009BE05F /* UIButton+Apply.swift */; };
-		C957F43E204E6BA3009BE05F /* UILabel+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F43A204E6BA3009BE05F /* UILabel+Apply.swift */; };
-		C957F43F204E6BA3009BE05F /* UIView+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F43B204E6BA3009BE05F /* UIView+Apply.swift */; };
+		C957F448204E6C6F009BE05F /* apply-swift-min.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F443204E6C6F009BE05F /* apply-swift-min.swift */; };
+		C957F449204E6C6F009BE05F /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F444204E6C6F009BE05F /* Apply.swift */; };
+		C957F44A204E6C6F009BE05F /* UIButton+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F445204E6C6F009BE05F /* UIButton+Apply.swift */; };
+		C957F44B204E6C6F009BE05F /* UILabel+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F446204E6C6F009BE05F /* UILabel+Apply.swift */; };
+		C957F44C204E6C6F009BE05F /* UIView+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957F447204E6C6F009BE05F /* UIView+Apply.swift */; };
 		C9CDD1CB204BEA70001BD9C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDD1CA204BEA70001BD9C5 /* AppDelegate.swift */; };
 		C9CDD1CD204BEA70001BD9C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDD1CC204BEA70001BD9C5 /* ViewController.swift */; };
 		C9CDD1D0204BEA70001BD9C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9CDD1CE204BEA70001BD9C5 /* Main.storyboard */; };
@@ -36,10 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C957F438204E6BA3009BE05F /* Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
-		C957F439204E6BA3009BE05F /* UIButton+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Apply.swift"; sourceTree = "<group>"; };
-		C957F43A204E6BA3009BE05F /* UILabel+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Apply.swift"; sourceTree = "<group>"; };
-		C957F43B204E6BA3009BE05F /* UIView+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Apply.swift"; sourceTree = "<group>"; };
+		C957F443204E6C6F009BE05F /* apply-swift-min.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "apply-swift-min.swift"; sourceTree = "<group>"; };
+		C957F444204E6C6F009BE05F /* Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
+		C957F445204E6C6F009BE05F /* UIButton+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Apply.swift"; sourceTree = "<group>"; };
+		C957F446204E6C6F009BE05F /* UILabel+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Apply.swift"; sourceTree = "<group>"; };
+		C957F447204E6C6F009BE05F /* UIView+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Apply.swift"; sourceTree = "<group>"; };
 		C9CDD1C7204BEA70001BD9C5 /* ApplySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CDD1CA204BEA70001BD9C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9CDD1CC204BEA70001BD9C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,21 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C957F437204E6BA3009BE05F /* class */ = {
+		C957F442204E6C6F009BE05F /* class */ = {
 			isa = PBXGroup;
 			children = (
-				C957F438204E6BA3009BE05F /* Apply.swift */,
-				C957F439204E6BA3009BE05F /* UIButton+Apply.swift */,
-				C957F43A204E6BA3009BE05F /* UILabel+Apply.swift */,
-				C957F43B204E6BA3009BE05F /* UIView+Apply.swift */,
+				C957F443204E6C6F009BE05F /* apply-swift-min.swift */,
+				C957F444204E6C6F009BE05F /* Apply.swift */,
+				C957F445204E6C6F009BE05F /* UIButton+Apply.swift */,
+				C957F446204E6C6F009BE05F /* UILabel+Apply.swift */,
+				C957F447204E6C6F009BE05F /* UIView+Apply.swift */,
 			);
-			path = class;
+			name = class;
+			path = ../class;
 			sourceTree = "<group>";
 		};
 		C9CDD1BE204BEA70001BD9C5 = {
 			isa = PBXGroup;
 			children = (
-				C957F437204E6BA3009BE05F /* class */,
+				C957F442204E6C6F009BE05F /* class */,
 				C9CDD1C9204BEA70001BD9C5 /* ApplySwift */,
 				C9CDD1C8204BEA70001BD9C5 /* Products */,
 			);
@@ -253,12 +257,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C957F449204E6C6F009BE05F /* Apply.swift in Sources */,
+				C957F44B204E6C6F009BE05F /* UILabel+Apply.swift in Sources */,
+				C957F44C204E6C6F009BE05F /* UIView+Apply.swift in Sources */,
+				C957F44A204E6C6F009BE05F /* UIButton+Apply.swift in Sources */,
+				C957F448204E6C6F009BE05F /* apply-swift-min.swift in Sources */,
 				C9CDD1CD204BEA70001BD9C5 /* ViewController.swift in Sources */,
-				C957F43F204E6BA3009BE05F /* UIView+Apply.swift in Sources */,
 				C9CDD1CB204BEA70001BD9C5 /* AppDelegate.swift in Sources */,
-				C957F43E204E6BA3009BE05F /* UILabel+Apply.swift in Sources */,
-				C957F43D204E6BA3009BE05F /* UIButton+Apply.swift in Sources */,
-				C957F43C204E6BA3009BE05F /* Apply.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
