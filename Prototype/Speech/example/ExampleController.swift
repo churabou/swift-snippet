@@ -11,10 +11,7 @@ import Speech
 import AVFoundation
 
 class ExampleController: UIViewController {
-    
-    
-    
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
