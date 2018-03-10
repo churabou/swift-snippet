@@ -51,6 +51,7 @@ class ViewController: UIViewController {
                 .addParentView(scrollView)
             }
             button.onTap {
+                self.playVideo()
                 self.fileterVideo(acv: self.acvs[i])
             }
         }
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
         videoPlayer.play()
     }
 
-    fileprivate func fileterVideo(acv: String) {
+    fileprivate func fileterVideo(acv: String, export: Bool = false) {
 
         var composition: AVVideoComposition!
         
@@ -118,14 +119,17 @@ class ViewController: UIViewController {
 
         if let c = composition {
             playerItem.videoComposition = c
+//            if export {
+//                exportFilteredVideo(composition: c,outputFile: NSHomeDirectory()+"/Documents/\(acv).mp4")
+//            }
         }
     }
 
-    fileprivate func exportFilteredVideo(_ composition: AVVideoComposition) {
+    fileprivate func exportFilteredVideo(composition: AVVideoComposition, outputFile: String) {
 
         let export = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset1280x720)!
         export.outputFileType = .mp4
-        export.outputURL = URL(fileURLWithPath: NSHomeDirectory() + "/Documents/aaa.mp4")
+        export.outputURL = URL(fileURLWithPath: outputFile)
         export.videoComposition = composition
         
         export.exportAsynchronously {
