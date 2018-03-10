@@ -9,11 +9,8 @@
 import UIKit
 import AVFoundation
 
-
-// レイヤーをAVPlayerLayerにする為のラッパークラス.
-
-class AVPlayerView : UIView{
-    
+// レイヤーをAVPlayerLayerにする為のラッパークラス
+class AVPlayerView : UIView {
     override class var layerClass: AnyClass {
         return AVPlayerLayer.self
     }
@@ -21,31 +18,67 @@ class AVPlayerView : UIView{
 
 class ViewController: UIViewController {
     
-    var path: String = ""
-    var asset: AVAsset!
-    var playerItem: AVPlayerItem!
-    var videoPlayer : AVPlayer!
+    
+    fileprivate let acvs = [
+        "aged", "clear", "cold",
+        "country","cream", "crossprocess",
+        "deep", "fresh_blue", "hot",
+        "oldie", "rainy", "retro",
+        "retro2", "storm","teacup",
+        "tendar", "vintage","warm_kiss"
+    ]
+    
+    fileprivate var scrollView = UIScrollView()
+    
+    func initializeView() {
+        
+        scrollView.apply { $0
+            .origin(x: 0, y: view.frame.height-100)
+            .size(width: view.frame.width, height: 100)
+            .contentSize(width: CGFloat(100*acvs.count), height: 100)
+            .backgroudColor(.red)
+            .addParentView(view)
+        }
+        
+        for i in 0..<acvs.count {
+            
+            let button = UIButton()
+            button.apply { $0
+                .origin(x: 10+100*CGFloat(i), y: 5)
+                .size(width: 90, height: 90)
+                .backgroudColor(.orange)
+                .title(acvs[i])
+                .addParentView(scrollView)
+            }
+            button.onTap {
+                self.fileterVideo(acv: self.acvs[i])
+            }
+        }
+    }
+    
+    fileprivate var path: String = ""
+    fileprivate var asset: AVAsset!
+    fileprivate var playerItem: AVPlayerItem!
+    fileprivate var videoPlayer : AVPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeView()
         guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
             fatalError("not found video.mp4")
         }
         self.path = path
         loadVideo(path: path)
-        initializeView()
         playVideo()
     }
     
-    func loadVideo(path: String) {
+    fileprivate func loadVideo(path: String) {
         
         asset = AVAsset(url: URL(fileURLWithPath: path))
         playerItem = AVPlayerItem(asset: asset)
         videoPlayer = AVPlayer(playerItem: playerItem)
-        
-       
-        // UIViewのレイヤーをAVPlayerLayerにする.
+
         let videoPlayerView = AVPlayerView(frame: view.bounds)
         let layer = videoPlayerView.layer as! AVPlayerLayer
         layer.videoGravity = AVLayerVideoGravity.resizeAspect
@@ -53,76 +86,42 @@ class ViewController: UIViewController {
         view.layer.addSublayer(layer)
     }
     
-    func playVideo() {
+    fileprivate func playVideo() {
         videoPlayer.seek(to: kCMTimeZero)
         videoPlayer.play()
     }
 
-    func fileterVideo(_ filetType: CIFilter.FilterName, acvName: String? = nil) {
+    fileprivate func fileterVideo(acv: String) {
 
         var composition: AVVideoComposition!
         
-        if let acv = acvName {
+        let filter = CIFilter(name: "CIColorCubeWithColorSpace")!
+        
+        let size = 32
+        let lutName = acv + "+LUT.png"
+        let lut = UIImage(named: lutName)!
+        let cubeData = createCubeData(lut)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        filter.setValue(size, forKey: "inputCubeDimension")
+        filter.setValue(cubeData, forKey: "inputCubeData")
+        filter.setValue(colorSpace, forKey: "inputColorSpace")
+        
+        composition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
             
-            let filter = CIFilter(name: "CIColorCubeWithColorSpace")!
-            
-            let size = 32
-            let lutName = acv + "+LUT.png"
-            let lut = UIImage(named: lutName)!
-            let cubeData = createCubeData(lut)
-            let colorSpace = CGColorSpaceCreateDeviceRGB()
-            
-            filter.setValue(size, forKey: "inputCubeDimension")
-            filter.setValue(cubeData, forKey: "inputCubeData")
-            filter.setValue(colorSpace, forKey: "inputColorSpace")
-            
-            composition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
-                
-                print("applying \(acv)")
-                let source = request.sourceImage.clampedToExtent()
-                filter.setValue(source, forKey: "inputImage")
-                let output = filter.outputImage!.cropped(to: request.sourceImage.extent)
-                request.finish(with: output, context: nil)
-            })
-        } else {
-            
-    
-        let filter = CIFilter.named(filetType)
-
-            
-            switch filetType {
-            case .pixellate:
-                filter.setValue(40, forKey: "inputScale")
-                composition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
-                    
-                    print("never called")
-                    // Clamp to avoid blurring transparent pixels at the image edges
-                    let source = request.sourceImage.clampedToExtent()
-                    filter.setValue(source, forKey: "inputImage")
-                    
-                    // Vary filter parameters based on video timing
-                    
-                    // Crop the blurred output to the bounds of the original image
-                    let output = filter.outputImage!.cropped(to: request.sourceImage.extent)
-                    
-                    //            UIImageWriteToSavedPhotosAlbum(output.createUIImage(), nil, nil, nil)
-                    // Provide the filter output to the composition
-                    request.finish(with: output, context: nil)
-                })
-            default:
-                return
-            }
-        }
+            print("applying \(acv)")
+            let source = request.sourceImage.clampedToExtent()
+            filter.setValue(source, forKey: "inputImage")
+            let output = filter.outputImage!.cropped(to: request.sourceImage.extent)
+            request.finish(with: output, context: nil)
+        })
 
         if let c = composition {
             playerItem.videoComposition = c
         }
     }
-    
-    
-    
-    
-    func exportFilteredVideo(_ composition: AVVideoComposition) {
+
+    fileprivate func exportFilteredVideo(_ composition: AVVideoComposition) {
 
         let export = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset1280x720)!
         export.outputFileType = .mp4
@@ -131,7 +130,6 @@ class ViewController: UIViewController {
         
         export.exportAsynchronously {
     
-            
             switch export.status {
                 
             case .completed:
@@ -153,79 +151,7 @@ class ViewController: UIViewController {
                 print("Unknown")
                 
             }
-        
         }
-    }
-    
-    
-    fileprivate let acvs = [
-        "aged", "clear", "cold",
-        "country","cream", "crossprocess",
-        "deep", "fresh_blue", "hot",
-        "oldie", "rainy", "retro",
-        "retro2", "storm","teacup",
-        "tendar", "vintage","warm_kiss"
-    ]
-
-    fileprivate var scrollView = UIScrollView()
-    
-    func initializeView() {
-        
-        scrollView.apply { $0
-            .origin(x: 0, y: view.frame.height-100)
-            .size(width: view.frame.width, height: 100)
-            .contentSize(width: CGFloat(100*acvs.count), height: 100)
-            .backgroudColor(.red)
-            .addParentView(view)
-        }
-        
-        for i in 0..<acvs.count {
-            
-            let button = UIButton()
-            button.apply { $0
-                .origin(x: 100*CGFloat(i), y: 0)
-                .size(width: 100, height: 100)
-                .backgroudColor(.orange)
-                .title(acvs[i])
-                .addParentView(scrollView)
-            }
-            button.tag = i
-            button.addTarget(self, action: #selector(actionButton), for: .touchUpInside)
-        }
-    }
-    
-    @objc fileprivate func actionButton(_ sender: UIButton) {
-        fileterVideo(.pixellate, acvName: acvs[sender.tag])
-    }
-}
-
-
-//Extension
-
-extension CIImage {
-    
-    func createUIImage() -> UIImage {
-        let context = CIContext()
-        guard let cgImage = context.createCGImage(self, from: extent) else {
-            fatalError("failed to create cgImage from ciImage")
-        }
-        return UIImage(cgImage: cgImage)
-    }
-}
-
-
-extension CIFilter {
-    
-    public enum FilterName: String {
-        case pixellate = "CIPixellate"
-        case lineOverlay = "CILineOverlay"
-    }
-    
-    static func named(_ name: FilterName) -> CIFilter {
-        guard let filter = CIFilter(name: name.rawValue) else {
-            fatalError("invalid filter name")
-        }
-        return filter
     }
 }
 
