@@ -1,7 +1,6 @@
+通常のSnapKit
         
-        通常のSnapKit
-        
-        ``` .swift
+``` .swift
         
         red.snp.makeConstraints { (make) in
             make.size.equalTo(200)
@@ -21,12 +20,11 @@
             make.centerX.equalToSuperview()
             make.bottom.equalTo(red.snp.top)
         }
+```
         
-        ```
+これを拡張して
         
-        これを拡張して
-        
-        ``` .swift
+``` .swift
         red.layout
         .constrainX(centerX: .equalToSuperView, width: 200)
         .constrainY(centerY: .equalToSuperView, height: 200)
@@ -39,4 +37,4 @@
         .constrainX(centerX: .equalToSuperView, width: 100)
         .constrainY(bottom: red.snp.top, height: 100)
         
-        ```
+```
